@@ -61,3 +61,9 @@ Route::get('listado', function () {
     );
     return view('libros.listado', compact('libros'));
 })->name('libros_listado');
+
+Route::apiResource('prueba', 'App\Http\Controllers\PruebaController@index');
+Route::resource('libros', 'App\Http\Controllers\LibroController')
+    ->only(['index', 'show', 'create', 'edit']);
+
+Route::get('libros/{id}', 'App\Http\Controllers\LibroController@show');
